@@ -1,0 +1,61 @@
+<div class="panel col-md-offset-2 col-md-6">
+    <h3 class="text-primary">Our products</h3>
+
+    <div [hidden]="!isNoData">
+        <div class="alert alert-danger" role="alert">There is no data for the specific id</div>
+    </div>
+
+    <div [hidden]="isNoData">
+        <div class="row">
+            <div class="form-horizontal">
+                <div class="form-group">
+                    <div class="col-md-1"></div>
+                    <div class="panel col-sm-10 control=label">
+                        <table class="table">
+
+                            <tr>
+                                <th colspan="2">
+                                    <h4>{{product?.name}}</h4>
+                                </th>
+                            </tr>
+                            <tr>
+                                <th>ID:</th>
+                                <td>{{product?.id}}</td>
+                            </tr>
+                            <tr>
+                                <th>Description:</th>
+                                <td>{{product?.description}}</td>
+                            </tr>
+
+                            <tr>
+                                <th>Image:</th>
+                                <td>
+                                    <div *ngIf="product?.image != null">
+                                        <img [src]="product?.image">
+                                    </div>
+                                    <td>
+                            </tr>
+
+                            <tr>
+                                <th>Price:</th>
+                                <td>{{product?.price}} THB</td>
+                            </tr>
+
+                            <tr>
+                                <th>Amount:</th>
+                                <td>{{product?.amount}}</td>
+                            </tr>
+
+                            <tr>
+                                <th>Rating:</th>
+                                <td>{{product?.rate}}</td>
+                            </tr>
+
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

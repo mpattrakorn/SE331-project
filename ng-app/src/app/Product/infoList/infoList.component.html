@@ -1,0 +1,31 @@
+<div class="panel col-md-offset-2 col-md-6">
+    <h3 class="text-primary">List of our products</h3>
+
+    <div *ngFor="let product of products" class="row">
+        <div class="form-horizontal">
+            <div class="form-group">
+                <div class="col-md-1"></div>
+                <div class="panel col-sm-10 control=label">
+                    <table>
+                        <tr>
+                            <th colspan="2">
+                                <h3>{{product.name}}</h3>
+                            </th>
+                        </tr>
+                        <tr>
+                            <th>Description:</th>
+                            <td>{{checkString(product)}}</td>
+                        </tr>
+                        <tr>
+                            <th>Price:</th>
+                            <td>{{product.price}} THB</td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td><button class="btn btn-primary" (click)="showInfo(product)">more</button></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
