@@ -1,0 +1,19 @@
+{
+    "users": [{
+        "id": 1,
+        "username": "aaaaaa",
+        "password": "123456",
+        "name": "harry",
+        "surname": "potter",
+        "email": "potter_za07@hotmail.com",
+        "address": "hogwarts"
+    }, {
+        "id": 2,
+        "username": "bbbbbb",
+        "password": "123456",
+        "name": "yammy",
+        "surname": "cnx",
+        "email": "yammy_eiei@hotmail.com",
+        "address": "CAMT"
+    }]
+}

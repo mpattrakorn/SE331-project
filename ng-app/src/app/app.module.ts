@@ -1,3 +1,7 @@
+import { UserDataService } from './services/user-data.service';
+import { UserComponent } from './user/list/user.component';
+import { UserRoutingModule } from './user/user-routing.module';
+import { RegisterComponent } from './user/register/user.register.component';
 import { LoginComponent } from './login/login.component';
 import { ProductDataServerService } from './services/product-data-server.service';
 import { FileNotFoundComponent } from './filenotfound/file-not-found.component';
@@ -28,9 +32,11 @@ import {AuthenticationService} from "./services/authentication.service";
 				infoListComponent,
 				MenuComponent,
 				FileNotFoundComponent,
-				LoginComponent],
- imports: [BrowserModule , FormsModule, HttpModule, ProductRoutingModule, AppRoutingModule],
+				LoginComponent,
+				RegisterComponent,
+				UserComponent ],
+ imports: [BrowserModule , FormsModule, HttpModule, UserRoutingModule ,ProductRoutingModule, AppRoutingModule],
  bootstrap: [AppComponent],
- providers: [ProductDataServerService, {provide: LocationStrategy, useClass: HashLocationStrategy}, AuthenticationService]
+ providers: [ProductDataServerService, UserDataService, {provide: LocationStrategy, useClass: HashLocationStrategy}, AuthenticationService]
 })
 export class AppModule {}
