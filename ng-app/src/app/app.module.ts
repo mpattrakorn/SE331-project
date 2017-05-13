@@ -1,3 +1,4 @@
+import { LoginRoutingModule } from './login/login-routing.module';
 import { UserDataService } from './services/user-data.service';
 import { UserComponent } from './user/list/user.component';
 import { UserRoutingModule } from './user/user-routing.module';
@@ -35,7 +36,7 @@ import {AuthenticationService} from "./services/authentication.service";
 				LoginComponent,
 				RegisterComponent,
 				UserComponent ],
- imports: [BrowserModule , FormsModule, HttpModule, UserRoutingModule ,ProductRoutingModule, AppRoutingModule],
+ imports: [BrowserModule , FormsModule, HttpModule, UserRoutingModule, LoginRoutingModule,ProductRoutingModule, AppRoutingModule],
  bootstrap: [AppComponent],
  providers: [ProductDataServerService, UserDataService, {provide: LocationStrategy, useClass: HashLocationStrategy}, AuthenticationService]
 })

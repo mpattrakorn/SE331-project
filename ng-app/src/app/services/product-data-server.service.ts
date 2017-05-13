@@ -15,7 +15,7 @@ export class ProductDataServerService {
         'Authorization': 'Bearer ' + this.authenticationService.getToken()
     });
 
-    serverPath: String = 'http://34.210.7.144:8080/SE331-assignment3-0.0.1-SNAPSHOT/'
+    serverPath: String = 'http://localhost:8080/'
 
     getProductData() {
         let productArray: Product[];
