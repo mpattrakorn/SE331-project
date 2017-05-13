@@ -1,3 +1,4 @@
+import { LoginComponent } from './login/login.component';
 import { ProductDataServerService } from './services/product-data-server.service';
 import { FileNotFoundComponent } from './filenotfound/file-not-found.component';
 import { ProductRoutingModule } from './Product/Product-routing.module';
@@ -16,6 +17,7 @@ import {InformationComponent} from './Product/information/information.component'
 import {infoListComponent} from './Product/infoList/infoList.component';
 import {AppRoutingModule} from "./app-routing.module";
 import {HashLocationStrategy, LocationStrategy} from "@angular/common";
+import {AuthenticationService} from "./services/authentication.service";
 
 
 @NgModule({
@@ -25,9 +27,10 @@ import {HashLocationStrategy, LocationStrategy} from "@angular/common";
 				InformationComponent,
 				infoListComponent,
 				MenuComponent,
-				FileNotFoundComponent],
+				FileNotFoundComponent,
+				LoginComponent],
  imports: [BrowserModule , FormsModule, HttpModule, ProductRoutingModule, AppRoutingModule],
  bootstrap: [AppComponent],
- providers: [ProductDataServerService, {provide: LocationStrategy, useClass: HashLocationStrategy}]
+ providers: [ProductDataServerService, {provide: LocationStrategy, useClass: HashLocationStrategy}, AuthenticationService]
 })
 export class AppModule {}

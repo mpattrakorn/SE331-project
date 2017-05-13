@@ -21,6 +21,7 @@ import{
 export class infoListComponent {
 
     products: Product[] = [];
+    search:string;
 
     constructor(private productDataServerService: ProductDataServerService , private router: Router){}
 
@@ -42,6 +43,16 @@ export class infoListComponent {
     showInfo(product){
         this.router.navigate(['/info',product.id]);
     }
+
+    onSearch(){
+    this.productDataServerService.findProduct(this.search)
+      .subscribe(products => this.products = products,
+        (error : Error ) => {
+          if (error.message === 'UnAuthorize'){
+            this.router.navigate(['login'],{queryParams:{source:'product'}});
+          }
+        });
+  }
 
 
 
