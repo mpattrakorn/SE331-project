@@ -1,9 +1,9 @@
 package camt.cbsd.entity.security;
 
 import camt.cbsd.config.json.View;
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonView;
-import org.springframework.data.annotation.Id;
+import camt.cbsd.entity.Product;
+import com.fasterxml.jackson.annotation.*;
+import lombok.*;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -11,9 +11,14 @@ import javax.validation.constraints.Size;
 import java.util.Date;
 import java.util.List;
 
-/**
- * Created by Administrator on 14/5/2560.
- */
+
+@Entity
+@Table(name = "USER")
+@Builder
+@NoArgsConstructor
+@Data
+@EqualsAndHashCode(exclude = "user")
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class User {
 
     @Id

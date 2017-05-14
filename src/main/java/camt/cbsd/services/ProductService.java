@@ -13,6 +13,7 @@ public interface ProductService {
     List<Product> getProducts();
     Product addProduct(Product product);
     Product findById(long id);
+    Product findByPriceGreaterThanAndPriceLessThan(double lowestPrice,double highestPrice);
 
     Product getProductForTransfer(String username);
 

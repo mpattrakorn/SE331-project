@@ -13,7 +13,7 @@ public interface ProductDao {
     Product findById(long id);
     Product addProduct(Product product);
     Product findByName(String name);
-    Product
+    Product findByPriceGreaterThanAndPriceLessThan(double lowestPrice,double highestPrice);
     Integer size();
 
 

@@ -25,6 +25,9 @@ public class ProductDaoDBImpl implements ProductDao {
     }
 
     @Override
+    public Product findByPriceGreaterThanAndPriceLessThan(double lowestPrice,double highestPrice){return productRepository.findByPriceGreaterThanAndPriceLessThan(lowestPrice,highestPrice);}
+
+    @Override
     public List<Product> getProducts() {
         return Lists.newArrayList(productRepository.findAll());
     }
@@ -32,6 +35,11 @@ public class ProductDaoDBImpl implements ProductDao {
     @Override
     public Product findById(long id) {
         return productRepository.findById(id);
+    }
+
+    @Override
+    public Product findByName(String name) {
+        return productRepository.findByName(name);
     }
 
     @Override
@@ -43,4 +51,6 @@ public class ProductDaoDBImpl implements ProductDao {
     public Integer size() {
         return (int)productRepository.count();
     }
+
+
 }

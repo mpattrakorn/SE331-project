@@ -30,6 +30,8 @@ public class Product {
     double price;
     int amount;
     double rate;
+    double lowestPrice;
+    double highestPrice;
 
     @OneToOne
     User user;

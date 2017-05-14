@@ -15,8 +15,7 @@ public class RegisterEntity {
     String username;
     String password;
     String role;
-    Customer customer;
-    Shopkeeper shopkeeper;
+
 
 }
 

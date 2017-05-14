@@ -10,5 +10,6 @@ public interface ProductRepository extends CrudRepository<Product,Long> {
 
     Product findById(Long id);
     Product findByName(String name);
+    Product findByPriceGreaterThanAndPriceLessThan(double lowestPrice,double highestPrice);
 
 }

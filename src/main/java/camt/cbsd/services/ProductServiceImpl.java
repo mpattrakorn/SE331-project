@@ -29,6 +29,9 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
+    public Product findByPriceGreaterThanAndPriceLessThan(double lowestPrice,double highestPrice){return productDao.findByPriceGreaterThanAndPriceLessThan(lowestPrice,highestPrice);}
+
+    @Override
     public List<Product> getProducts() {
         return productDao.getProducts();
     }
