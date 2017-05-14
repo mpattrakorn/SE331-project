@@ -1,6 +1,8 @@
-package com.example.dao;
+package camt.cbsd.dao;
 
-import com.example.repository.ProductRepository;
+import camt.cbsd.dao.ProductDao;
+import camt.cbsd.entity.Product;
+import camt.cbsd.repository.ProductRepository;
 import jersey.repackaged.com.google.common.collect.Lists;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Profile;

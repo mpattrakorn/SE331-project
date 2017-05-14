@@ -1,12 +1,13 @@
-package com.example.services;
+package camt.cbsd.services;
 
-import com.example.dao.ProductDao;
-import com.example.entity.Product;
+import camt.cbsd.dao.ProductDao;
+import camt.cbsd.entity.Product;
 import org.hibernate.Hibernate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.AutoConfigureOrder;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -40,5 +41,14 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public Product findById(long id) {
         return productDao.findById(id);
+    }
+
+    @Transactional
+    @Override
+    public Product getProductForTransfer(String name) {
+        Product product = productDao.findByName(name);
+        Hibernate.initialize(product.getUser());
+        Hibernate.initialize(product.getAuthorities());
+        return product;
     }
 }

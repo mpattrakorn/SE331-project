@@ -20,7 +20,7 @@ import java.util.Date;
 import java.util.List;
 
 /**
- * Created by Administrator on 14/5/2560.
+ * Created by   on 14/5/2560.
  */
 @Service
 @ConfigurationProperties(prefix = "server")
@@ -72,12 +72,12 @@ public class CustomerServiceImpl implements CustomerService {
                 .build();
         customer = customerDao.addCustomer(customer);
         user = userRepository.save(user);
-        student.setUser(user);
-        user.setStudent(student);
+        product.setUser(user);
+        user.setProduct(product);
 
-        Hibernate.initialize(student.getUser());
-        Hibernate.initialize(student.getAuthorities());
-        return student;
+        Hibernate.initialize(product.getUser());
+        Hibernate.initialize(product.getAuthorities());
+        return product;
     }
 
 }
