@@ -1,7 +1,7 @@
-package com.example.controller;
+package camt.cbsd.controller;
 
-import com.example.entity.Product;
-import com.example.services.ProductService;
+import camt.cbsd.entity.Product;
+import camt.cbsd.services.ProductService;
 import org.apache.commons.io.FilenameUtils;
 import org.glassfish.jersey.media.multipart.FormDataContentDisposition;
 import org.glassfish.jersey.media.multipart.FormDataParam;

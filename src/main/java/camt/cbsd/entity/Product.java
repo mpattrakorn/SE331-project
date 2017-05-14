@@ -1,4 +1,4 @@
-package com.example.entity;
+package camt.cbsd.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.*;

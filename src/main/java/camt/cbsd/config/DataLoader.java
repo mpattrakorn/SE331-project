@@ -1,7 +1,7 @@
-package com.example.config;
+package camt.cbsd.config;
 
-import com.example.dao.ProductDao;
-import com.example.entity.Product;
+import camt.cbsd.dao.ProductDao;
+import camt.cbsd.entity.Product;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;

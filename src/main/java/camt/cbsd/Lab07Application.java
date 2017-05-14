@@ -1,12 +1,12 @@
-package com.example;
+package camt.cbsd;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class CamtApplication {
+public class Lab07Application {
 
 	public static void main(String[] args) {
-		SpringApplication.run(CamtApplication.class, args);
+		SpringApplication.run(Lab07Application.class, args);
 	}
 }

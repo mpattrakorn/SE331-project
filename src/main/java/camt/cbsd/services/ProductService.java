@@ -1,6 +1,6 @@
-package com.example.services;
+package camt.cbsd.services;
 
-import com.example.entity.Product;
+import camt.cbsd.entity.Product;
 
 import java.util.List;
 

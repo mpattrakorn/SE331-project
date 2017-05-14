@@ -1,6 +1,6 @@
-package com.example.dao;
+package camt.cbsd.dao;
 
-import com.example.entity.Product;
+import camt.cbsd.entity.Product;
 
 import java.util.List;
 
