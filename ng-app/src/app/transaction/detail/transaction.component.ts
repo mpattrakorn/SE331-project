@@ -8,7 +8,7 @@ import {TransactionDataServerService} from "../../services/transaction-data-serv
   templateUrl: './transaction.component.html'
 })
 
-export class InformationComponent{
+export class TransactionInfoComponent{
 
   constructor(private route : ActivatedRoute, private transactionDataServerService: TransactionDataServerService){}
   transaction: Transaction;

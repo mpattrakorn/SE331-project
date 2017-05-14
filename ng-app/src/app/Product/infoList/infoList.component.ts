@@ -46,12 +46,11 @@ export class infoListComponent {
 
     onSearch(){
     this.productDataServerService.findProduct(this.search)
-      .subscribe(products => this.products = products,
-        (error : Error ) => {
-          if (error.message === 'UnAuthorize'){
-            this.router.navigate(['login'],{queryParams:{source:'product'}});
-          }
-        });
+      .subscribe(products => this.products = products);
+   }
+
+   addToCart(product){
+
    }
 
 
