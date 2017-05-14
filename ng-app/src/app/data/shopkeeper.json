@@ -1,0 +1,15 @@
+{
+  "shopkeeper": [{
+    "id": 1,
+    "name": "Preeti",
+    "surname": "eiei",
+    "username": "PP",
+    "password": "12345"
+  }, {
+    "id": 2,
+    "name": "Shoojai",
+    "surname": "aiai",
+    "username": "Sh",
+    "password": "pasword"
+  }]
+}

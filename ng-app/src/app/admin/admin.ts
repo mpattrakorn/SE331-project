@@ -1,4 +1,4 @@
-export class Shopkeeper{
+export class Admin{
   id: number;
   name: string;
   surname: string;

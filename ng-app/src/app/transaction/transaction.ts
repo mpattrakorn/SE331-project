@@ -6,4 +6,5 @@ export class Transaction{
   totalPrice : number;
   confirmation: string;
   status : boolean;
+  image:string;
 }

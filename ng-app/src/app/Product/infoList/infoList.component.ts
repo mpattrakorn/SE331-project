@@ -52,7 +52,7 @@ export class infoListComponent {
             this.router.navigate(['login'],{queryParams:{source:'product'}});
           }
         });
-  }
+   }
 
 
 
