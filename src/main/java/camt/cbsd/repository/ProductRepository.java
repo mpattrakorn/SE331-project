@@ -1,6 +1,6 @@
-package com.example.repository;
+package camt.cbsd.repository;
 
-import com.example.entity.Product;
+import camt.cbsd.entity.Product;
 import org.springframework.data.repository.CrudRepository;
 
 /**
@@ -9,5 +9,6 @@ import org.springframework.data.repository.CrudRepository;
 public interface ProductRepository extends CrudRepository<Product,Long> {
 
     Product findById(Long id);
+    Product findByName(String name);
 
 }

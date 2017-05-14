@@ -1,12 +1,14 @@
 package camt.cbsd.entity;
 
+import camt.cbsd.config.json.View;
+import camt.cbsd.entity.security.Authority;
+import camt.cbsd.entity.security.User;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonView;
 import lombok.*;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.List;
 
 /**
  * Created by Administrator on 16/4/2560.
@@ -28,5 +30,12 @@ public class Product {
     double price;
     int amount;
     double rate;
+
+    @OneToOne
+    User user;
+    @JsonView(View.Login.class)
+    public List<Authority> getAuthorities(){
+        return user.getAuthorities();
+    }
 
 }

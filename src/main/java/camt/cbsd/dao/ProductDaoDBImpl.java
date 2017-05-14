@@ -1,6 +1,5 @@
 package com.example.dao;
 
-import com.example.entity.Product;
 import com.example.repository.ProductRepository;
 import jersey.repackaged.com.google.common.collect.Lists;
 import org.springframework.beans.factory.annotation.Autowired;

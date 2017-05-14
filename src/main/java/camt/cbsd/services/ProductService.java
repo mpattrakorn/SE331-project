@@ -14,4 +14,6 @@ public interface ProductService {
     Product addProduct(Product product);
     Product findById(long id);
 
+    Product getProductForTransfer(String username);
+
 }
