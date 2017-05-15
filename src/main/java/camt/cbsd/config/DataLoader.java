@@ -153,7 +153,7 @@ public class DataLoader implements ApplicationRunner{
                 .firstname("user")
                 .lastname("user")
                 .email("shopkeeper@user.com")
-                .enabled(false)
+                .enabled(true)
                 .lastPasswordResetDate(Date.from(LocalDate.of(2016, 01, 01).atStartOfDay(ZoneId.systemDefault()).toInstant()))
                 .build();
 
