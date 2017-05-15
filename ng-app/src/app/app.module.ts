@@ -24,6 +24,7 @@ import {AppRoutingModule} from "./app-routing.module";
 import {HashLocationStrategy, LocationStrategy} from "@angular/common";
 import {AuthenticationService} from "./services/authentication.service";
 import {SelectModule} from 'ng2-select';
+import {CartComponent} from "./cart/cart.component";
 
 
 @NgModule({
@@ -36,10 +37,11 @@ import {SelectModule} from 'ng2-select';
 				FileNotFoundComponent,
 				LoginComponent,
 				RegisterComponent,
-				UserComponent ],
+				UserComponent,
+        CartComponent],
  imports: [BrowserModule , FormsModule, HttpModule, UserRoutingModule,
    LoginRoutingModule,ProductRoutingModule, AppRoutingModule, SelectModule],
  bootstrap: [AppComponent],
- providers: [ProductDataServerService, UserDataService, {provide: LocationStrategy, useClass: HashLocationStrategy}, AuthenticationService]
+ providers: [ProductDataServerService, UserDataService, {provide: LocationStrategy, useClass: HashLocationStrategy},ProductDataService, AuthenticationService]
 })
 export class AppModule {}

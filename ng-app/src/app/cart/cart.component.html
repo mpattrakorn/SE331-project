@@ -17,6 +17,12 @@
                 <h3>Price</h3>
               </th>
             </tr>
+            <ul *ngFor="let product of cartItems">
+              <th><span>{{product.name}}</span></th>
+              <th></th>
+              <th><span>{{product.price}}</span></th>
+              <th><span> <button type="button" (click)="removeItemFromCart(product.id)">Remove</button></span></th>
+            </ul>
           </table>
         </div>
       </div>

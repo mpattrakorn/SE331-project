@@ -1,7 +1,7 @@
 import {ProductDataServerService} from './../../services/product-data-server.service';
 import {Router} from '@angular/router';
 import {
-  Component
+  Component, OnInit
 } from '@angular/core';
 import {
   Product
@@ -12,27 +12,33 @@ import {
 import{
   ProductDataFileService
 }from '../../services/product-data-file.service';
+import {CartService} from "../../services/cart.service";
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'showInfoList',
   templateUrl: './infoList.component.html',
   styleUrls: ['./infoList.component.css']
 })
-export class infoListComponent {
+export class infoListComponent implements OnInit{
 
   products: Product[] = [];
   search: string;
   searchPrice1: number;
   searchPrice2: number;
 
-  constructor(private productDataServerService: ProductDataServerService, private router: Router) {
+  storeItems: Product[] = [];
+  errorMessage: string;
+
+  constructor(private productDataServerService: ProductDataServerService, private router: Router,private productDataService: ProductDataService) {
   }
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.productDataServerService.getProductData()
       .subscribe(resultProduct => {
         this.products = resultProduct;
-      })
+      });
+    this.getStoreItems();
   }
 
   checkString(product) {
@@ -53,9 +59,15 @@ export class infoListComponent {
   }
 
 
-  addToCart(product) {
-
+  getStoreItems():void{
+    this.productDataService.getItems().subscribe(
+      data=>this.storeItems = data,
+      error => this.errorMessage =<any>error
+    );
   }
 
+  addItemInCart(id:number):void{
+    this.productDataService.addItem(id);
+  }
 
 }

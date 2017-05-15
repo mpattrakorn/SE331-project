@@ -1,16 +1,27 @@
-import {Component} from '@angular/core'
+import {Component, OnInit} from '@angular/core'
 import {Product} from '../Product/Product';
+import {ProductDataService} from "../services/product-data.service";
 
-Component({
+@Component({
   selector : 'cart',
-  templateUrl : './cart.component.html',
+  templateUrl : './cart.component.html'
 })
 
-export class CartComponent{
+export class CartComponent implements OnInit{
 
-  ngOnInit(){}
+  cartItems : Product[] = [];
+  constructor(private productDataService: ProductDataService ){}
 
-  item: Product[] = [];
+  getItemForCart(): void{
+    this.cartItems = this.productDataService.getSelectedItems();
+  }
 
+  ngOnInit():void{
+    this.getItemForCart();
+  }
+
+  removeItemFromCart(id:number){
+    this.productDataService.removeItem(id);
+  }
 
 }
