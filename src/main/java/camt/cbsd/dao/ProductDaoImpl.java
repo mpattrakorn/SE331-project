@@ -55,7 +55,7 @@ public class ProductDaoImpl implements ProductDao {
 
     @Override
     public List<Product> getProducts(String searchText) {
-        return productRepository.findByNameIgnoreCaseContainingOrderByName(searchText);
+        return productRepository.findByNameIgnoreCaseContainingOrDescriptionIgnoreCaseContaining(searchText, searchText);
     }
 
 
