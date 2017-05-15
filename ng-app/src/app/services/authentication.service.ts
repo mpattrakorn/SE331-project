@@ -57,8 +57,8 @@ export class AuthenticationService {
     let user: any = this.getCurrentUser();
 
     if (user) {
-      let roleList:string[] = role.split(",");
-      for(let j = 0;j < roleList.length;j++) {
+      let roleList: string[] = role.split(",");
+      for (let j = 0; j < roleList.length; j++) {
         let authList = user.authorities;
         let userRole = 'ROLE_' + roleList[j].trim().toUpperCase();
         for (let i = 0; i < authList.length; i++) {
@@ -68,7 +68,25 @@ export class AuthenticationService {
         }
       }
       return false;
-
     }
   }
+
+  noRole(role: string): boolean {
+    let user: any = this.getCurrentUser();
+
+    if (user) {
+      let roleList:string[] = role.split(",");
+      for(let j = 0;j < roleList.length;j++) {
+        let authList = user.authorities;
+        let userRole = 'ROLE_' + roleList[j].trim().toUpperCase();
+        for (let i = 0; i < authList.length; i++) {
+          if (authList[i].name == userRole) {
+            return false;
+          }
+        }
+      }
+    }
+    return true;
+  }
+
 }

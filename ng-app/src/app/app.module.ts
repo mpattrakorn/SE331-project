@@ -23,6 +23,7 @@ import {infoListComponent} from './Product/infoList/infoList.component';
 import {AppRoutingModule} from "./app-routing.module";
 import {HashLocationStrategy, LocationStrategy} from "@angular/common";
 import {AuthenticationService} from "./services/authentication.service";
+import {SelectModule} from 'ng2-select';
 
 
 @NgModule({
@@ -36,7 +37,8 @@ import {AuthenticationService} from "./services/authentication.service";
 				LoginComponent,
 				RegisterComponent,
 				UserComponent ],
- imports: [BrowserModule , FormsModule, HttpModule, UserRoutingModule, LoginRoutingModule,ProductRoutingModule, AppRoutingModule],
+ imports: [BrowserModule , FormsModule, HttpModule, UserRoutingModule,
+   LoginRoutingModule,ProductRoutingModule, AppRoutingModule, SelectModule],
  bootstrap: [AppComponent],
  providers: [ProductDataServerService, UserDataService, {provide: LocationStrategy, useClass: HashLocationStrategy}, AuthenticationService]
 })

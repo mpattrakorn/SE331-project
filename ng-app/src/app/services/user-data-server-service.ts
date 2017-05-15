@@ -1,12 +1,12 @@
 import {Injectable} from '@angular/core';
-import {Product} from '../Product/Product'
 import {Http, Headers, Response, RequestOptions, URLSearchParams} from '@angular/http';
 import {Observable} from "rxjs/Rx";
 import {AuthenticationService} from './authentication.service';
+import {User} from '../user/user';
 
 
 @Injectable()
-export class ProductDataServerService {
+export class UserDataServerService {
   constructor(private http: Http, private authenticationService: AuthenticationService) {
   }
 
@@ -17,9 +17,9 @@ export class ProductDataServerService {
 
   serverPath: String = 'http://localhost:8080/'
 
-  getProductData() {
-    let productArray: Product[];
-    return this.http.get(this.serverPath + 'product')
+  getUserData() {
+    let userArray: User[];
+    return this.http.get(this.serverPath + 'user')
       .map(res => res.json())
       .catch((error: any) => {
         return Observable.throw(new Error('UnAuthorize'));
@@ -27,15 +27,14 @@ export class ProductDataServerService {
 
   }
 
-  getProduct(id: number) {
-    let product: Product;
-    return this.http.get(this.serverPath + 'product/' + id)
+  getUser(id: number) {
+    let user: User;
+    return this.http.get(this.serverPath + 'user/' + id)
       .map((res: Response) => {
         if (res) {
           if (res.status === 200) {
-            let product: Product = res.json();
-            product.image = this.serverPath + "product/images/" + product.image;
-            return product;
+            let user: User = res.json();
+            return user;
           }
           if (res.status === 204) {
             return null;
@@ -60,28 +59,27 @@ export class ProductDataServerService {
       });
   }
 
-  findProduct(search: string) {
-    let product: Product;
+  findUser(search: string) {
+    let user: User;
     let params: URLSearchParams = new URLSearchParams();
     params.set('search', search);
-    return this.http.get('http://localhost:8080/products/', {headers: this.headers, search: params})
+    return this.http.get('http://localhost:8080/users/', {headers: this.headers, search: params})
       .map(res => res.json());
 
   }
 
 
-  addProduct(product: Product, file: any) {
+  addUser(user: User, file: any) {
     let formData = new FormData();
     let fileName: string;
 
     formData.append('file', file);
     return this.http.post(this.serverPath + 'product/image', formData)
       .flatMap(filename => {
-        product.image = filename.text();
         let headers = new Headers({'Content-Type': 'application/json'});
         let options = new RequestOptions({headers: headers, method: 'post'});
-        let body = JSON.stringify(product);
-        return this.http.post(this.serverPath + 'product', body, options)
+        let body = JSON.stringify(user);
+        return this.http.post(this.serverPath + 'user', body, options)
           .map(res => {
             return res.json()
           })

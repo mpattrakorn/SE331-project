@@ -1,58 +1,61 @@
-import { ProductDataServerService } from './../../services/product-data-server.service';
-import { Router } from '@angular/router';
+import {ProductDataServerService} from './../../services/product-data-server.service';
+import {Router} from '@angular/router';
 import {
-    Component
+  Component
 } from '@angular/core';
 import {
-    Product
+  Product
 } from '../Product';
 import {
-    ProductDataService
+  ProductDataService
 }from '../../services/product-data.service';
 import{
-    ProductDataFileService
+  ProductDataFileService
 }from '../../services/product-data-file.service';
 
 @Component({
-    selector: 'showInfoList',
-    templateUrl: './infoList.component.html',
-    styleUrls: ['./infoList.component.css']
+  selector: 'showInfoList',
+  templateUrl: './infoList.component.html',
+  styleUrls: ['./infoList.component.css']
 })
 export class infoListComponent {
 
-    products: Product[] = [];
-    search:string;
+  products: Product[] = [];
+  search: string;
+  searchPrice1: number;
+  searchPrice2: number;
 
-    constructor(private productDataServerService: ProductDataServerService , private router: Router){}
+  constructor(private productDataServerService: ProductDataServerService, private router: Router) {
+  }
 
-    ngOnInit() {
-        this.productDataServerService.getProductData()
-        .subscribe(resultProduct => {
-            this.products = resultProduct;
-        })
+  ngOnInit() {
+    this.productDataServerService.getProductData()
+      .subscribe(resultProduct => {
+        this.products = resultProduct;
+      })
+  }
+
+  checkString(product) {
+    if (product.description.length < 50) {
+      return product.description;
+    } else {
+      return product.description.substring(0, 46) + "...";
     }
+  }
 
-    checkString(product){
-        if(product.description.length < 50){
-            return product.description;
-        }else{
-            return product.description.substring(0,46) + "...";
-        }
-    }
+  showInfo(product) {
+    this.router.navigate(['/info', product.id]);
+  }
 
-    showInfo(product){
-        this.router.navigate(['/info',product.id]);
-    }
-
-    onSearch(){
+  onSearch() {
     this.productDataServerService.findProduct(this.search)
       .subscribe(products => this.products = products);
-   }
+  }
 
-   addToCart(product){
 
-   }
+  addToCart(product) {
 
+  }
 
 
 }
