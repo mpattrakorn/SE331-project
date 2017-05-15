@@ -3,13 +3,14 @@ package camt.cbsd.repository;
 import camt.cbsd.entity.Product;
 import org.springframework.data.repository.CrudRepository;
 
-/**
- * Created by Administrator on 17/4/2560.
- */
-public interface ProductRepository extends CrudRepository<Product,Long> {
+import java.util.List;
 
+/**
+ * Created by JM on 5/14/2017.
+ */
+
+public interface ProductRepository extends CrudRepository<Product,Long> {
     Product findById(Long id);
-    Product findByName(String name);
-    Product findByPriceGreaterThanAndPriceLessThan(double lowestPrice,double highestPrice);
+    List<Product> findByNameIgnoreCaseContainingOrderByName(String name);
 
 }

@@ -64,7 +64,7 @@ export class ProductDataServerService {
         let product: Product;
         let params: URLSearchParams = new URLSearchParams();
         params.set('search', search);
-        return this.http.get('http://localhost:8080/product/', { headers: this.headers, search: params })
+        return this.http.get('http://localhost:8080/products/', { headers: this.headers, search: params })
             .map(res => res.json());
 
     }

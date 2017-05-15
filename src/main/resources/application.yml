@@ -1,17 +1,24 @@
 spring:
   profiles:
     active:
+      - DBDataSource
       - inMemoryDB
-      - backend
+  http:
+    multipart:
+      max-file-size: 10MB
+      max-request-size: 10MB
 server:
   baseUrl: http://localhost:8080/
   imageUrl: product/images/
----
-spring:
-  profiles: backend
-
-server:
   imageServerDir: C:\Users\Administrator\Documents\GitHub\SE331-project\imgServer\
+jwt:
+  header: Authorization
+  secret: mySecret
+  expiration: 604800
+  route:
+    authentication:
+      path: auth
+      refresh: refresh
 ---
 spring:
   profiles: inMemoryDB
@@ -21,3 +28,14 @@ spring:
     username: sa
     password:
 ---
+spring:
+  profiles: local
+server:
+  baseUrl: http://localhost:1000/
+  imageUrl: images/
+---
+spring:
+  profiles: remote
+server:
+  baseUrl: https://s3-ap-southeast-1.amazonaws.com/se331/
+  imageUrl: pics/

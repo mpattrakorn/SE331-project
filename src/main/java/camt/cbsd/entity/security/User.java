@@ -2,8 +2,13 @@ package camt.cbsd.entity.security;
 
 import camt.cbsd.config.json.View;
 import camt.cbsd.entity.Product;
-import com.fasterxml.jackson.annotation.*;
-import lombok.*;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonView;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -11,14 +16,12 @@ import javax.validation.constraints.Size;
 import java.util.Date;
 import java.util.List;
 
-
 @Entity
 @Table(name = "USER")
 @Builder
 @NoArgsConstructor
+@AllArgsConstructor
 @Data
-@EqualsAndHashCode(exclude = "user")
-@JsonIgnoreProperties(ignoreUnknown = true)
 public class User {
 
     @Id
@@ -26,10 +29,6 @@ public class User {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "user_seq")
     @SequenceGenerator(name = "user_seq", sequenceName = "user_seq", allocationSize = 1)
     private Long id;
-
-    @OneToOne(mappedBy = "user")
-    @JsonBackReference
-    User user;
 
     @Column(name = "USERNAME", length = 50, unique = true)
     @NotNull
@@ -66,7 +65,7 @@ public class User {
     private Date lastPasswordResetDate;
 
     @JsonView(View.Login.class)
-
+    @JsonManagedReference
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
             name = "USER_AUTHORITY",

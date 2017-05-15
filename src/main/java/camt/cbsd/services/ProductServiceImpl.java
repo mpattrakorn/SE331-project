@@ -4,17 +4,15 @@ import camt.cbsd.dao.ProductDao;
 import camt.cbsd.entity.Product;
 import org.hibernate.Hibernate;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.AutoConfigureOrder;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
+import javax.transaction.Transactional;
 import java.util.List;
 
 /**
- * Created by Administrator on 16/4/2560.
+ * Created by JM on 5/14/2017.
  */
-
 @Service
 @ConfigurationProperties(prefix = "server")
 public class ProductServiceImpl implements ProductService {
@@ -22,18 +20,25 @@ public class ProductServiceImpl implements ProductService {
     @Autowired
     ProductDao productDao;
 
+
     String imageServerDir;
 
     public void setImageServerDir(String imageServerDir) {
         this.imageServerDir = imageServerDir;
     }
 
-    @Override
-    public Product findByPriceGreaterThanAndPriceLessThan(double lowestPrice,double highestPrice){return productDao.findByPriceGreaterThanAndPriceLessThan(lowestPrice,highestPrice);}
+    @Transactional
+    public List<Product> getProducts() {
+        List<Product> products = productDao.getProducts();
+        return products;
+    }
 
     @Override
-    public List<Product> getProducts() {
-        return productDao.getProducts();
+    @Transactional
+    public Product findById(long id) {
+        Product product = productDao.findById(id);
+
+        return product;
     }
 
     @Override
@@ -42,16 +47,13 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public Product findById(long id) {
-        return productDao.findById(id);
+    @Transactional
+    public List<Product> queryProduct(String query) {
+        if (query == null || query.equals(""))
+            return productDao.getProducts();
+        return productDao.getProducts(query);
     }
 
-    @Transactional
-    @Override
-    public Product getProductForTransfer(String name) {
-        Product product = productDao.findByName(name);
-        Hibernate.initialize(product.getUser());
-        Hibernate.initialize(product.getAuthorities());
-        return product;
-    }
+
+
 }

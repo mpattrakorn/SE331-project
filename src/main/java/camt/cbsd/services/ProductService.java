@@ -5,16 +5,11 @@ import camt.cbsd.entity.Product;
 import java.util.List;
 
 /**
- * Created by Administrator on 16/4/2560.
+ * Created by JM on 5/14/2017.
  */
-
 public interface ProductService {
-
     List<Product> getProducts();
-    Product addProduct(Product product);
     Product findById(long id);
-    Product findByPriceGreaterThanAndPriceLessThan(double lowestPrice,double highestPrice);
-
-    Product getProductForTransfer(String username);
-
+    Product addProduct(Product product);
+    List<Product> queryProduct(String query);
 }

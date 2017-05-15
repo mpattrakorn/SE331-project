@@ -1,17 +1,18 @@
 package camt.cbsd.entity;
 
-import camt.cbsd.config.json.View;
-import camt.cbsd.entity.security.Authority;
-import camt.cbsd.entity.security.User;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonView;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
-import javax.persistence.*;
-import java.util.List;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
 /**
- * Created by Administrator on 16/4/2560.
+ * Created by JM on 5/14/2017.
  */
 @Entity
 @Data
@@ -22,22 +23,13 @@ import java.util.List;
 public class Product {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy= GenerationType.AUTO)
     long id;
     String name;
     String description;
     String image;
     double price;
-    int amount;
     double rate;
-    double lowestPrice;
-    double highestPrice;
-
-    @OneToOne
-    User user;
-    @JsonView(View.Login.class)
-    public List<Authority> getAuthorities(){
-        return user.getAuthorities();
-    }
+    int amount;
 
 }

@@ -7,14 +7,16 @@ import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;
-import org.springframework.transaction.annotation.Transactional;
+
+import javax.transaction.Transactional;
 
 /**
- * Created by Administrator on 17/4/2560.
+ * Created by Dto on 07-Apr-17.
  */
 @ConfigurationProperties(prefix="server")
 @Component
-public class DataLoader implements ApplicationRunner {
+public class DataLoader implements ApplicationRunner{
+
     ProductDao productDao;
 
     @Autowired

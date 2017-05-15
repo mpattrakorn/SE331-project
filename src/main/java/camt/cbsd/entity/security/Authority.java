@@ -3,15 +3,19 @@ package camt.cbsd.entity.security;
 import camt.cbsd.config.json.View;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonView;
-import org.springframework.data.annotation.Id;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.util.List;
 
-/**
- * Created by Administrator on 14/5/2560.
- */
+@Entity
+@Table(name = "AUTHORITY")
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class Authority {
 
     @Id
@@ -54,5 +58,4 @@ public class Authority {
     public void setUsers(List<User> users) {
         this.users = users;
     }
-
 }
