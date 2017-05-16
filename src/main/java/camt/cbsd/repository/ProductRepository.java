@@ -12,5 +12,5 @@ import java.util.List;
 public interface ProductRepository extends CrudRepository<Product,Long> {
     Product findById(Long id);
     List<Product> findByNameIgnoreCaseContainingOrDescriptionIgnoreCaseContaining(String name, String description);
-
+    Product deleteProductById(Long id);
 }

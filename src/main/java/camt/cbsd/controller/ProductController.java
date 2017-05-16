@@ -77,6 +77,16 @@ public class ProductController {
 
     }
 
+    public ResponseEntity<?> removeProduct(@PathVariable("id") long id) {
+        Product product = productService.removeProduct(id);
+        if (product != null)
+            return ResponseEntity.ok(product);
+        else
+            //http code 204
+            return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
+
+    }
+
     @GetMapping("/products")
     public ResponseEntity<?> queryProduct(HttpServletRequest request, @RequestParam("search") String query) {
         List<Product> products = productService.queryProduct(query);

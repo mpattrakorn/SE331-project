@@ -47,6 +47,12 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
+    public Product removeProduct(long id) {
+        return productDao.removeProduct(id);
+    }
+
+
+    @Override
     @Transactional
     public List<Product> queryProduct(String query) {
         if (query == null || query.equals(""))

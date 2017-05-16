@@ -13,6 +13,7 @@ import{
   ProductDataFileService
 }from '../../services/product-data-file.service';
 import { Observable } from 'rxjs';
+import {AuthenticationService} from '../../services/authentication.service';
 
 @Component({
   selector: 'showInfoList',
@@ -29,7 +30,8 @@ export class infoListComponent implements OnInit{
   storeItems: Product[] = [];
   errorMessage: string;
 
-  constructor(private productDataServerService: ProductDataServerService, private router: Router,private productDataService: ProductDataService) {
+  constructor(private productDataServerService: ProductDataServerService,
+              private router: Router,private productDataService: ProductDataService,private authenService:AuthenticationService) {
   }
 
   ngOnInit(): void {
@@ -67,6 +69,18 @@ export class infoListComponent implements OnInit{
 
   addItemInCart(product){
     this.productDataService.addItem(product);
+  }
+
+  hasRole(role:string){
+    return this.authenService.hasRole(role);
+  }
+
+  noRole(role:string){
+    return this.authenService.noRole(role);
+  }
+
+  removeItem(id:number){
+    return this.productDataServerService.removeProduct(id);
   }
 
 }

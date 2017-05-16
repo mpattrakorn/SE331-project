@@ -58,6 +58,11 @@ public class ProductDaoImpl implements ProductDao {
         return productRepository.findByNameIgnoreCaseContainingOrDescriptionIgnoreCaseContaining(searchText, searchText);
     }
 
+    @Override
+    public Product removeProduct(long id) {
+        System.out.println("ok");
+        return productRepository.deleteProductById(id);
+    }
 
 
 }

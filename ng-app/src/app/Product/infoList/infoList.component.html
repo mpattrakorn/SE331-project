@@ -31,7 +31,8 @@
                             <td>{{product.price}} THB</td>
                         </tr>
                         <tr>
-                            <td><button class="btn btn-warning" (click)="addItemInCart(product)">Add to the cart</button></td>
+                            <td *ngIf="hasRole('SHOPKEEPER')"><button class="btn btn-danger" (click)="removeItem(product.id)">Remove</button></td>
+                            <td *ngIf="noRole('ADMIN,SHOPKEEPER')"><button class="btn btn-warning" (click)="addItemInCart(product)">Add to the cart</button></td>
                             <td><button class="btn btn-primary" (click)="showInfo(product)">more</button></td>
                         </tr>
                     </table>

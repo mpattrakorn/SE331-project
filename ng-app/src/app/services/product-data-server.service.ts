@@ -69,6 +69,12 @@ export class ProductDataServerService {
 
   }
 
+  removeProduct(id:number){
+    console.log("ok");
+      return this.http.delete(this.serverPath + 'product/' + id)
+      .map(res => res.json());
+  }
+
 
   addProduct(product: Product, file: any) {
     let formData = new FormData();

@@ -12,5 +12,6 @@ public interface ProductDao {
     Product findById(long id);
     Product addProduct(Product Product);
     List<Product> getProducts(String searchText);
+    Product removeProduct(long id);
 
 }
