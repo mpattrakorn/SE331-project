@@ -12,7 +12,6 @@ import {
 import{
   ProductDataFileService
 }from '../../services/product-data-file.service';
-import {CartService} from "../../services/cart.service";
 import { Observable } from 'rxjs';
 
 @Component({
@@ -59,15 +58,15 @@ export class infoListComponent implements OnInit{
   }
 
 
-  getStoreItems():void{
+  getStoreItems(){
     this.productDataService.getItems().subscribe(
       data=>this.storeItems = data,
       error => this.errorMessage =<any>error
     );
   }
 
-  addItemInCart(id:number):void{
-    this.productDataService.addItem(id);
+  addItemInCart(product){
+    this.productDataService.addItem(product);
   }
 
 }

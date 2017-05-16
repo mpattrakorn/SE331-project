@@ -25,6 +25,7 @@ import {HashLocationStrategy, LocationStrategy} from "@angular/common";
 import {AuthenticationService} from "./services/authentication.service";
 import {SelectModule} from 'ng2-select';
 import {CartComponent} from "./cart/cart.component";
+import {CartRoutingModule} from "./cart/cart-routing.module";
 
 
 @NgModule({
@@ -40,7 +41,7 @@ import {CartComponent} from "./cart/cart.component";
 				UserComponent,
         CartComponent],
  imports: [BrowserModule , FormsModule, HttpModule, UserRoutingModule,
-   LoginRoutingModule,ProductRoutingModule, AppRoutingModule, SelectModule],
+   LoginRoutingModule,ProductRoutingModule, CartRoutingModule, AppRoutingModule, SelectModule],
  bootstrap: [AppComponent],
  providers: [ProductDataServerService, UserDataService, {provide: LocationStrategy, useClass: HashLocationStrategy},ProductDataService, AuthenticationService]
 })

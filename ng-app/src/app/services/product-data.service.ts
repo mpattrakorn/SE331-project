@@ -38,8 +38,8 @@ export class ProductDataService {
     return this.selectedItems;
   }
 
-  addItem(id:number):void{
-    let item = this.allProducts.find(ob => ob.id === id);
+  addItem(product):void{
+    let item = this.allProducts.find(ob => ob.id === product.id);
     if(this.selectedItems.indexOf(item)<0){
       this.selectedItems.push(item);
     }
