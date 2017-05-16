@@ -20,7 +20,7 @@ import {ActivatedRoute, Params} from "@angular/router";
 })
 export class InformationComponent {
 
-    constructor(private route: ActivatedRoute, private productDataServerService: ProductDataServerService) {}
+   constructor(private route: ActivatedRoute, private productDataServerService: ProductDataServerService, private productDataService:ProductDataService) {}
    product: Product;
    isNoData:boolean;
    ngOnInit() {
@@ -38,5 +38,15 @@ export class InformationComponent {
 
   }
 
+  cartItems : Product[] = [];
+  getItemForCart(): void{
+    this.cartItems = this.productDataService.getSelectedItems();
+  }
+
+
+
+  addItemInCart(id:number):void{
+    this.productDataService.addItem(id);
+  }
 
 }
